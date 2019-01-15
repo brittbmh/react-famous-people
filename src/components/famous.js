@@ -7,6 +7,7 @@ class Famous extends Component {
             person: 'Dolly Parton',
             role: '9 to 5'
         }
+
     }
 
     acceptPerson = (event) => {
@@ -23,12 +24,24 @@ class Famous extends Component {
         })
     }
 
-    render () {
+    logFamous = (event) => {
+        console.log(event.target.value);
+        event.preventDefault();
+    }
+
+    render() {
         return (
             <div>
-                <input onChange={this.acceptPerson} type="text" placeholder="famous person" />
-                <input onChange={this.acceptRole} type="text" placeholder="role" />
-                <button id="submit">Submit</button>
+                <form onSubmit={this.logFamous}>
+                    <label>Famous Person
+                        <input name="person" onChange={this.acceptPerson} value={this.state.person} type="text" placeholder="famous person" />
+                    </label>
+                    <label>Famous Role
+                        <input name="role" onChange={this.acceptRole} value={this.state.role} id="role" type="text" placeholder="role" />
+
+                    </label>
+                    <button id="submit">Submit</button>
+                </form>
                 <br />
                 <p>{this.state.person} is famous for "{this.state.role}"</p>
             </div>
