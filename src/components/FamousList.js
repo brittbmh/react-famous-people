@@ -2,7 +2,22 @@ import React, { Component } from 'react';
 import FamousRow from './FamousRow';
 
 class FamousList extends Component {
+
+    buildRows() {
+        const famousPeopleList = [];
+        for (let i = 0; i < this.props.famousList.length; i++) {
+            let famousOne = this.props.famousList[i];
+            let personRow = (<tr>
+                <td>{famousOne.person}</td>
+                <td>{famousOne.role}</td>
+            </tr>)
+            famousPeopleList.push(personRow);
+        }
+        return famousPeopleList;
+    }
+
     render() {
+
         return (
             <div>
                 {JSON.stringify(this.props.famousList)}
@@ -12,7 +27,8 @@ class FamousList extends Component {
                         <th>Role</th>
                     </thead>
                     <tbody>
-                        <FamousRow />
+                        {/* <FamousRow /> */}
+                        {this.buildRows()}
                     </tbody>
                 </table>
             </div>
