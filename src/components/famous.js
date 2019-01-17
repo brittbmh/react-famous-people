@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 class Famous extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             person: 'Dolly Parton',
-            role: '9 to 5'
+            role: '9 to 5',
         }
 
     }
@@ -23,16 +23,29 @@ class Famous extends Component {
             role: event.target.value
         })
     }
-
-    logFamous = (event) => {
-        console.log(event.target.value);
+    
+    sendFamous = (event) => {
         event.preventDefault();
+        console.log(`${this.state.person}`);
+        
+        const famousPerson = {
+            person: this.state.person,
+            role: this.state.role
+        }
+        this.props.logFamous(famousPerson);
+        this.setState({
+            person: '',
+            role: '',
+        })
+        
     }
+
+    
 
     render() {
         return (
             <div>
-                <form onSubmit={this.logFamous}>
+                <form onSubmit={this.sendFamous}>
                     <label>Famous Person
                         <input name="person" onChange={this.acceptPerson} value={this.state.person} type="text" placeholder="famous person" />
                     </label>
