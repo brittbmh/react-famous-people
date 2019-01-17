@@ -7,10 +7,7 @@ class FamousList extends Component {
         const famousPeopleList = [];
         for (let i = 0; i < this.props.famousList.length; i++) {
             let famousOne = this.props.famousList[i];
-            let personRow = (<tr>
-                <td>{famousOne.person}</td>
-                <td>{famousOne.role}</td>
-            </tr>)
+            let personRow = (<FamousRow key={i} famousOne={famousOne}/>)
             famousPeopleList.push(personRow);
         }
         return famousPeopleList;
@@ -27,7 +24,6 @@ class FamousList extends Component {
                         <th>Role</th>
                     </thead>
                     <tbody>
-                        {/* <FamousRow /> */}
                         {this.buildRows()}
                     </tbody>
                 </table>

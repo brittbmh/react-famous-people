@@ -3,7 +3,10 @@ import React, {Component} from 'react';
 class FamousRow extends Component {
     render() {
         return (
-            <tr><td>Dolly Parton</td><td>9 to 5</td></tr>
+            <tr>
+                <td>{this.props.famousOne.person}</td>
+                <td>{this.props.famousOne.role}</td>
+            </tr>
         );
     }
 }
